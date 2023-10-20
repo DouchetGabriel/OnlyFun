@@ -1,0 +1,12 @@
+{
+  "name": "only-fun-api",
+  "version": "1.0.0",
+  "scripts": {
+    "startApiServer": "supervisor server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "supervisor": "^0.12.0"
+  }
+}
