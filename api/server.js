@@ -15,7 +15,7 @@ app.get("/api/getDatasGames", (req, res) => {
 app.get("/api/recoverGame/:id", (req, res) => {
     const datasGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
     const id = req.params.id
-    const game = datasGamesFromJson.find(game => game.id === id)
+    const game = datasGamesFromJson.Games.find(game => game.id === id)
     res.json(game)
 })
 

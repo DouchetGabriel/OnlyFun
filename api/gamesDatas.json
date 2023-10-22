@@ -68,6 +68,41 @@
           "text": "Roh incarner un assassin, quoi de mieux !"
         }
       ]
+    },
+
+    {
+      "id": 5,
+      "infos": {
+        "name": "Spider-Man 2",
+        "description": "Marvel's Spider-Man 2 est un jeu d'action-aventure développé par Insomniac Jeux et publié par Sony Interactive Entertainment. Il est basé sur le Marvel Comics caractère Spider-Man, et dispose d'un récit inspiré par sa mythologie de bande dessinée de longue date qui est également dérivé de divers adaptations dans d'autres médias. C'est la troisième entrée dans le Spider-Man de Marvel série, agissant comme une suite à Spider-Man de Marvel (2018) et un suivi de Spider-Man de Marvel: Miles Morales (2020). Dans cet épisode, Peter Parker et Miles Morale luttez pour franchir les prochaines étapes de leur vie personnelle tout en luttant contre plusieurs nouvelles menaces, dont une milice privée dirigée par Kraven le Chasseur, qui transforment New York City dans un terrain de chasse pour les individus super-puissants; et l'extraterrestre Venin symbiote, qui se lie à Parker et l'influence négativement, menaçant de détruire ses relations personnelles.",
+        "imageCard": "https://imgs.search.brave.com/-o8TujydwF3en5x25R_IasdV8HIygLR0Hkywk8gK3ZQ/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGhlZGlyZWN0/LmNvbS9tZWRpYS9h/cnRpY2xlX2Z1bGwv/c3BpZGVyLW1hbi0y/LXBzNS1nYW1lLmpw/Zw",
+        "imageBanner": "https://cdn-uploads.gameblog.fr/img/news/427895_6486d50d00188.jpg",
+        "pegi": "16",
+        "date": "20/10/2023",
+        "developers": "Insomniac Games & Sony Interactive Entertainment",
+        "type": "solo player",
+        "youtubeVideoLink": "https://youtu.be/9wbmHtyuRZ8?si=cD9Re8o2YRG0YTru"
+      },
+      "comments": [
+        {
+          "id": 1,
+          "author": {
+            "id": 1,
+            "name": "Gaby",
+            "avatar": "https://i.pravatar.cc/300?u=1"
+          },
+          "text": "J'y ai joué toute mon adolescene, j'en garde un superbe souvenir !"
+        },
+        {
+          "id": 2,
+          "author": {
+            "id": 2,
+            "name": "Jean",
+            "avatar": "https://i.pravatar.cc/300?u=2"
+          },
+          "text": "Roh incarner un assassin, quoi de mieux !"
+        }
+      ]
     }
   ]
 }

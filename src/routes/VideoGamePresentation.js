@@ -3,7 +3,7 @@ import '../App.css';
 import {useLoaderData} from "react-router-dom";
 
 export async function loader ({ params }) {
-    var response = await fetch("http://localhost:3001/api/recoverGame/:id" + params.id)
+    var response = await fetch("http://localhost:3001/api/recoverGame/" + params.id)
     return await response.json()
 }
 
@@ -192,16 +192,7 @@ function LoadingComponent() {
 
 export default function VideoGamePresentation() {
 
-    //const { dataGame } = useLoaderData();
-
-    const [dataGame, setData] = useState(undefined);
-
-    useEffect(() => {
-        loader().then((data) => {
-            JSON.parse(data)
-            setData(data)
-        })
-    })
+    const { dataGame } = useLoaderData();
 
     if (dataGame === undefined) {
         return (
@@ -213,7 +204,7 @@ export default function VideoGamePresentation() {
         )
     } else {
         return (
-            <div className="dark:bg-gray-900">
+            <div className="dark:bg-gray-900" id="dataGame">
                 <ImageBannerComponent dataGame={dataGame}/>
                 <GameDescriptionComponent dataGame={dataGame}/>
                 <YoutubeVideoComponent dataGame={dataGame}/>

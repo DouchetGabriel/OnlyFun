@@ -88,7 +88,7 @@ function MainPage() {
                 <header>
                     <TitleBannerComponent/>
                 </header>
-                {dataGame.map((dataGame) => VideoGameCardComponent({dataGame}))}
+                {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame}/>)}
             </div>
         );
     }
