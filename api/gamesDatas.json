@@ -39,14 +39,14 @@
       "id": 4,
       "infos": {
         "name": "Assassin's Creed 3",
-        "description": "Assassin's Creed III est un jeu vidéo d'action-aventure de 2012 développé par Ubisoft Montréal et publié par Ubisoft pour PlayStation 3, Xbox 360, Wii U et Microsoft Windows. Il s'agit du cinquième volet majeur de la série Assassin's Creed et d'une suite directe à Assassin's Creed: Revelations de 2011. Le jeu est sorti dans le monde entier pour PlayStation 3 et Xbox 360, à partir de l'Amérique du Nord le 30 octobre 2012, avec une version Wii U et Microsoft Windows qui suit en novembre 2012.",
+        "description": "Assassin's Creed III est un jeu vidéo d'action-aventure de 2012 développé par Ubisoft Montréal et publié par Ubisoft pour PlayStation 3, Xbox 360, Wii U et Microsoft Windows. Il s'agit du cinquième volet majeur de la série Assassin's Creed et d'une suite directe à Assassin's Creed: Revelations de 2011.",
         "imageCard": "https://store-images.s-microsoft.com/image/apps.45005.68640107179785665.3ff3e830-efb8-42c5-aa55-9b33b3a8192c.c2a8a8e4-a627-4b25-a6a9-33dd064e4e4e?q=90&w=480&h=270",
-        "imageBanner": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000010684/e3067db27e695b489f16de14d650c1c487dcf54bc9bfbbea2510f7acc9a2d57e",
+        "imageBanner": "https://cdn2.steamgriddb.com/file/sgdb-cdn/hero/a667f4e7b0c8a3babe331569d3eac6bd.png",
         "pegi": "18",
         "date": "30/10/2012",
         "developers": "Ubisoft Montréal et Canada",
         "type": "solo player and multiplayer",
-        "youtubeVideoLink": "https://youtu.be/S7HNwwXxI9U?si=QxzdQ7g7vYM-Es8V"
+        "youtubeVideoLink": "https://youtu.be/nL6chDa7T8Q?si=c2P33Niy58qHVF-Y"
       },
       "comments": [
         {
@@ -74,14 +74,14 @@
       "id": 5,
       "infos": {
         "name": "Spider-Man 2",
-        "description": "Marvel's Spider-Man 2 est un jeu d'action-aventure développé par Insomniac Jeux et publié par Sony Interactive Entertainment. Il est basé sur le Marvel Comics caractère Spider-Man, et dispose d'un récit inspiré par sa mythologie de bande dessinée de longue date qui est également dérivé de divers adaptations dans d'autres médias. C'est la troisième entrée dans le Spider-Man de Marvel série, agissant comme une suite à Spider-Man de Marvel (2018) et un suivi de Spider-Man de Marvel: Miles Morales (2020). Dans cet épisode, Peter Parker et Miles Morale luttez pour franchir les prochaines étapes de leur vie personnelle tout en luttant contre plusieurs nouvelles menaces, dont une milice privée dirigée par Kraven le Chasseur, qui transforment New York City dans un terrain de chasse pour les individus super-puissants; et l'extraterrestre Venin symbiote, qui se lie à Parker et l'influence négativement, menaçant de détruire ses relations personnelles.",
-        "imageCard": "https://imgs.search.brave.com/-o8TujydwF3en5x25R_IasdV8HIygLR0Hkywk8gK3ZQ/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGhlZGlyZWN0/LmNvbS9tZWRpYS9h/cnRpY2xlX2Z1bGwv/c3BpZGVyLW1hbi0y/LXBzNS1nYW1lLmpw/Zw",
-        "imageBanner": "https://cdn-uploads.gameblog.fr/img/news/427895_6486d50d00188.jpg",
+        "description": "C'est la troisième entrée dans le Spider-Man de Marvel série, agissant comme une suite à Spider-Man de Marvel (2018) et un suivi de Spider-Man de Marvel: Miles Morales (2020). Dans cet épisode, Peter Parker et Miles Morale luttez pour franchir les prochaines étapes de leur vie personnelle tout en luttant contre plusieurs nouvelles menaces, dont une milice privée dirigée par Kraven le Chasseur, qui transforment New York City dans un terrain de chasse pour les individus super-puissants; et l'extraterrestre Venin symbiote, qui se lie à Parker et l'influence négativement, menaçant de détruire ses relations personnelles.",
+        "imageCard": "https://staticg.sportskeeda.com/editor/2023/06/72fb8-16862557520422-1920.jpg?w=840",
+        "imageBanner": "https://i.redd.it/satqvuz3zk2b1.jpg",
         "pegi": "16",
         "date": "20/10/2023",
         "developers": "Insomniac Games & Sony Interactive Entertainment",
         "type": "solo player",
-        "youtubeVideoLink": "https://youtu.be/9wbmHtyuRZ8?si=cD9Re8o2YRG0YTru"
+        "youtubeVideoLink": "https://youtu.be/nq1M_Wc4FIc?si=_iTbM6bvlNNIfHRo"
       },
       "comments": [
         {
@@ -91,7 +91,7 @@
             "name": "Gaby",
             "avatar": "https://i.pravatar.cc/300?u=1"
           },
-          "text": "J'y ai joué toute mon adolescene, j'en garde un superbe souvenir !"
+          "text": "J'ai reçu ce jeu en kdo à Noël, j'en suis devenu accros !"
         },
         {
           "id": 2,
@@ -100,7 +100,7 @@
             "name": "Jean",
             "avatar": "https://i.pravatar.cc/300?u=2"
           },
-          "text": "Roh incarner un assassin, quoi de mieux !"
+          "text": "Pouvoir incarner le Spider-Man quoi..."
         }
       ]
     }

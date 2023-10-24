@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../App.css';
 import {Link} from "react-router-dom";
-
-async function loadData() {
-    var response = await fetch("http://localhost:3001/api/getDatasGames")
-    return await response.json()
-}
+import {DataGameProvider, useData} from "../Context/UseData";
 
 function TitleBannerComponent() {
     return (
@@ -20,7 +16,7 @@ function TitleBannerComponent() {
 
 function VideoGameCardComponent(props) {
     return (
-        <div className="pt-10">
+        <div className="pt-10 flew items-center justify-center pl-20">
             <div
                 className="pb-0 relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border items-center ml-10">
                 <div
@@ -66,13 +62,8 @@ function LoadingComponent() {
 }
 
 function MainPage() {
-    const [dataGame, setData] = useState(undefined);
 
-    useEffect(() => {
-        loadData().then((data) => {
-            setData(data.Games)
-        })
-    }, []);
+    const {dataGame} = useData();
 
     if (dataGame === undefined) {
         return (
@@ -84,14 +75,25 @@ function MainPage() {
         );
     } else {
         return (
-            <div className="dark:bg-gray-900 min-h-screen">
-                <header>
-                    <TitleBannerComponent/>
-                </header>
-                {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame}/>)}
-            </div>
+                <div className="dark:bg-gray-900 min-h-screen">
+                    <header>
+                        <TitleBannerComponent/>
+                    </header>
+                    <div className="grid grid-cols-3">
+                        {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame}/>)}
+                    </div>
+                </div>
         );
     }
 }
 
-export default MainPage;
+
+function MainPageWrapper() { // Le Wrapper permet de placer les components de la Main Page directement dans le provider et donc de récupérer les données
+    return (
+        <DataGameProvider>
+            <MainPage/>
+        </DataGameProvider>
+    )
+}
+
+export default MainPageWrapper;

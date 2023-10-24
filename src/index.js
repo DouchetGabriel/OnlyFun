@@ -4,9 +4,13 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
-import VideoGamePresentation, {
+import VideoGamePresentation/*, {
     loader as VideoGamePresentationLoader,
-} from "./routes/VideoGamePresentation";
+}*/ from "./routes/VideoGamePresentation";
+
+import UseData, {
+    loader as VideoGamePresentationLoader,
+} from "./Context/UseData";
 
 import ErrorPage from "./ErrorPage";
 import MainPage from "./routes/MainPage";

@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../App.css';
 import {useLoaderData} from "react-router-dom";
-
-export async function loader ({ params }) {
-    var response = await fetch("http://localhost:3001/api/recoverGame/" + params.id)
-    return await response.json()
-}
+import {DataGameProvider} from "../Context/UseData";
 
 function ImageBannerComponent(props) {
     return (
@@ -79,28 +75,31 @@ function YoutubeVideoComponent(props) {
 }
 
 function CommentsSectionComponent(props) {
+    const dataGame = useLoaderData();
+
     return (
         <section className="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
             <div className="max-w-2xl mx-auto px-4">
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Comments space</h2>
+                    <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Commentaires</h2>
                 </div>
-                <form className="mb-6">
+
+                {dataGame.comments.map((comment) => {
+                    return CommentsComponent(comment)
+                })}
+
+                <form className="mb-6 mt-3">
                     <div
                         className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                        <label htmlFor="comment" className="sr-only">Your comment</label>
                         <textarea id="comment" rows="6"
-                                  className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                                  placeholder="Write a comment..." required></textarea>
+                                  className="px-0 w-full text-lg pb-0 text-gray-400 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                                  placeholder="Exprimez-vous..." required></textarea>
                     </div>
                     <button type="submit"
                             className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 border border-amber-50">
-                        Post comment
+                        Envoyer
                     </button>
                 </form>
-                {props.dataGame.comments.map((comment) => {
-                    return CommentsComponent(comment)
-                })}
             </div>
         </section>
     )
@@ -118,21 +117,14 @@ function CommentsComponent(comment) {
                             src={comment.author.avatar}/>
                         {comment.author.name}
                     </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <time pubdate dateTime="2022-02-08"
-                              title="February 8th, 2022">Feb. 8, 2022
-                        </time>
-                    </p>
                 </div>
+
                 <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
                         className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         type="button">
-                    <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                         fill="currentColor" viewBox="0 0 16 3">
-                        <path
-                            d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                     </svg>
-                    <span className="sr-only">Comment settings</span>
                 </button>
 
                 <div id="dropdownComment1"
@@ -154,19 +146,17 @@ function CommentsComponent(comment) {
                     </ul>
                 </div>
             </footer>
-            <p key={comment.id} className="text-gray-500 dark:text-gray-400">
+
+            <p key={comment.id} className="text-amber-50 dark:text-amber-50">
                 {comment.text}
             </p>
+
             <div className="flex items-center mt-4 space-x-4">
                 <button type="button"
                         className="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
-                    <svg className="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                         fill="none" viewBox="0 0 20 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
                     </svg>
-                    Reply
                 </button>
             </div>
         </article>
@@ -190,9 +180,9 @@ function LoadingComponent() {
     )
 }
 
-export default function VideoGamePresentation() {
+function VideoGamePresentation() {
 
-    const { dataGame } = useLoaderData();
+    const dataGame = useLoaderData();
 
     if (dataGame === undefined) {
         return (
@@ -208,8 +198,18 @@ export default function VideoGamePresentation() {
                 <ImageBannerComponent dataGame={dataGame}/>
                 <GameDescriptionComponent dataGame={dataGame}/>
                 <YoutubeVideoComponent dataGame={dataGame}/>
-                <CommentsSectionComponent dataGame={dataGame}/>
+                <CommentsSectionComponent/>
             </div>
         );
     }
 }
+
+function VideoGamePresentationWrapper() {
+    return (
+        <DataGameProvider>
+            <VideoGamePresentation/>
+        </DataGameProvider>
+    )
+}
+
+export default VideoGamePresentationWrapper;
