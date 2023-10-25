@@ -109,7 +109,7 @@ function CommentsSectionComponent() {
                                   className="px-0 w-full text-lg pb-0 text-gray-400 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                                   placeholder="Exprimez-vous..." required></textarea>
                     </div>
-                    <button type="submit" onClick={() => onSendCommentClick(dataGame)}
+                    <button type="submit" onClick={() => onAddCommentClick(dataGame)}
                             className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 border border-amber-50">
                         Envoyer
                     </button>
@@ -199,7 +199,7 @@ function LoadingComponent() {
     )
 }
 
-const onSendCommentClick = (dataGame) => {
+const onAddCommentClick = (dataGame) => {
     const authorNameTextArea = document.getElementById("authorNameTextArea");
     const commentTextArea = document.getElementById("commentTextArea");
 
