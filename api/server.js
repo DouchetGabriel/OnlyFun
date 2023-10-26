@@ -19,7 +19,7 @@ app.get("/api/recoverGame/:id", (req, res) => {
     res.json(game)
 })
 
-/*app.post("/api/:id/addComment", (req, res) => {
+app.post("/api/:id/addComment", (req, res) => {
     const datasGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
 
     const game = datasGamesFromJson.Games.find(game => game.id == id)
@@ -37,6 +37,6 @@ app.get("/api/recoverGame/:id", (req, res) => {
     game.comments.push(newComment)
     fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(datasGamesFromJson, null, 2))
     return res.json(newComment)
-})*/
+})
 
 app.listen(3001, () => console.log("Server started..."))

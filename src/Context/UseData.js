@@ -1,5 +1,4 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {text} from "express";
 
 const dataGameContext = createContext(null)
 
@@ -28,7 +27,7 @@ export function DataGameProvider(props) {
         })
     }, []);
 
-    /*async function addComment(name, comment) {
+    async function addComment(name, comment) {
         const newComment = {
             id: {...dataGame.comment++},
             author: {
@@ -45,19 +44,20 @@ export function DataGameProvider(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({comment: newComment}),
+                body: JSON.stringify({comments: newComment}),
             })
             const commentFromServer = await response.json();
             setData((lastGameValue) => ({...lastGameValue, comments: lastGameValue.comments.map(c => c.id === newComment.id ? commentFromServer : c)}))
         } catch (e) {
-            setData((lastGameValue) => ({...lastGameValue, comments: game.comments.filter(c => c.id !== newComment.id)}))
+            //setData((lastGameValue) => ({...lastGameValue, comments: dataGame.comments.filter(c => c.id !== newComment.id)}))
+            console.log(e)
         }
-    }*/
+    }
 
     return (
         <dataGameContext.Provider value={{
             dataGame,
-            //addComment,
+            addComment,
         }}>
             {props.children}
         </dataGameContext.Provider>
