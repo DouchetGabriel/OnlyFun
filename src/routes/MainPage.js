@@ -80,7 +80,7 @@ function MainPage() {
                         <TitleBannerComponent/>
                     </header>
                     <div className="grid grid-cols-3">
-                        {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame}/>)}
+                        {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame} key={dataGame.id}/>)}
                     </div>
                 </div>
         );
