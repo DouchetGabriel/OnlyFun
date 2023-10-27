@@ -7,22 +7,21 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+const dataGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
+
 app.get("/api/getDataGames", (req, res) => {
-    const datasGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
-    res.json(datasGamesFromJson)
+    res.json(dataGamesFromJson)
 })
 
 app.get("/api/recoverGame/:id", (req, res) => {
-    const datasGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
     const id = req.params.id
-    const game = datasGamesFromJson.Games.find(game => game.id == id)
+    const game = dataGamesFromJson.Games.find(game => game.id == id)
     res.json(game)
 })
 
 app.post("/api/:id/addComment", (req, res) => {
-    const datasGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
-
-    const game = datasGamesFromJson.Games.find(game => game.id == id)
+    console.log("req.body => ", req.body)
+    const game = dataGamesFromJson.Games.find(game => game.id == req.params.id)
 
     const newComment = {
         id: Math.floor(Math.random() * 100),
@@ -35,7 +34,7 @@ app.post("/api/:id/addComment", (req, res) => {
     }
 
     game.comments.push(newComment)
-    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(datasGamesFromJson, null, 2))
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(dataGamesFromJson, null, 2))
     return res.json(newComment)
 })
 

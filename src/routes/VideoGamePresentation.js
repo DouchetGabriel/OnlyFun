@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../App.css';
 import {useLoaderData} from "react-router-dom";
 import {DataGameProvider, useData} from "../Context/UseData";
@@ -85,6 +85,21 @@ function YoutubeVideoComponent() {
 function CommentsSectionComponent() {
     const dataGame = useLoaderData();
     const {addComment} = useData();
+    /*const commentTextArea = useRef();
+    const authorNameTextArea = useRef();
+
+    async function onSubmit(event) {
+        event.preventDefault()
+
+        const comment = commentTextArea.current.value;
+        const authorName = authorNameTextArea.current.value;
+
+        console.log("onSubmit => ", comment, authorName)
+
+        addComment(authorName, comment);
+        commentTextArea.current.value = ""
+        authorNameTextArea.current.value = ""
+    }*/
 
     return (
         <section className="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
@@ -98,17 +113,24 @@ function CommentsSectionComponent() {
                 <form className="mb-6 mt-3">
                     <div
                         className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                        <textarea id="authorNameTextArea" placeholder="Votre pseudo" required
+                        <textarea placeholder="Votre pseudo"
+                                  id="authorNameTextArea"
+                                  //ref={authorNameTextArea}
+                                  required
                                   className="px-0 w-full text-lg pb-0 text-gray-400 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800">
                         </textarea>
                     </div>
                     <div
                         className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                        <textarea id="commentTextArea" rows="6"
+                        <textarea rows="6"
+                                  id="commentTextArea"
                                   className="px-0 w-full text-lg pb-0 text-gray-400 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                                  placeholder="Exprimez-vous..." required></textarea>
+                                  placeholder="Exprimez-vous..."
+                                  //ref={commentTextArea}
+                                  required>
+                        </textarea>
                     </div>
-                    <button type="submit" onClick={() => { addComment(document.getElementById("authorNameTextArea").value, document.getElementById("commentTextArea").value) }}
+                    <button type={"submit"} onClick={() => addComment(document.getElementById("authorNameTextArea").value, document.getElementById("commentTextArea").value)}
                             className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 border border-amber-50">
                         Envoyer
                     </button>
