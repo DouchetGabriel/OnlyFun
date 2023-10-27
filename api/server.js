@@ -38,4 +38,11 @@ app.post("/api/:id/addComment", (req, res) => {
     return res.json(newComment)
 })
 
+app.delete("/api/:id/deleteComment/:commentId", (req, res) => {
+    const game = dataGamesFromJson.Games.find(game => game.id === req.params.id)
+    game.comments = game.comments.filter(comment => comment.id !== req.params.commentId)
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(dataGamesFromJson, null, 2))
+    return res.json(game)
+})
+
 app.listen(3001, () => console.log("Server started..."))

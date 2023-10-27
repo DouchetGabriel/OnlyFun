@@ -60,10 +60,24 @@ export function DataGameProvider(props) {
         }
     }
 
+    async function deleteComment(name, comment){
+        try {
+            await fetch("http://localhost:3001/api/" + dataGame.id, + "/deleteComment" + comment.id, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <dataGameContext.Provider value={{
             dataGame,
             addComment,
+            deleteComment,
         }}>
             {props.children}
         </dataGameContext.Provider>
