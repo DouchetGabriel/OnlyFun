@@ -21,6 +21,7 @@ app.get("/api/recoverGame/:id", (req, res) => {
 
 app.post("/api/:id/addComment", (req, res) => {
     console.log("req.body => ", req.body)
+
     const game = dataGamesFromJson.Games.find(game => game.id == req.params.id)
 
     const newComment = {

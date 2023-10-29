@@ -41,7 +41,7 @@ export function DataGameProvider(props) {
         }
         console.log(newComment)
         try {
-            const response = await fetch("http://localhost:3001/api/" + dataGame.id, + "/addComment", {
+            const response = await fetch("http://localhost:3001/api/" + dataGame.id + "/addComment", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export function DataGameProvider(props) {
 
     async function deleteComment(name, comment){
         try {
-            await fetch("http://localhost:3001/api/" + dataGame.id, + "/deleteComment" + comment.id, {
+            await fetch("http://localhost:3001/api/" + dataGame.id + "/deleteComment" + comment.id, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
