@@ -31,10 +31,18 @@
             "avatar": "https://i.pravatar.cc/300?u=2"
           },
           "text": "Ce jeu est juste insane, je le recommande !"
+        },
+        {
+          "id": 18,
+          "author": {
+            "name": "Gabriel",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 40
+          },
+          "text": "Roh j'ai tellement joué à ce jeu étant ado, l'univers Star Wars est tellement exceptionnel :)"
         }
       ]
     },
-
     {
       "id": 4,
       "infos": {
@@ -66,10 +74,27 @@
             "avatar": "https://i.pravatar.cc/300?u=2"
           },
           "text": "Roh incarner un assassin, quoi de mieux !"
+        },
+        {
+          "id": 70,
+          "author": {
+            "name": "Jacques",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 17
+          },
+          "text": "Lol"
+        },
+        {
+          "id": 89,
+          "author": {
+            "name": "Thibaut",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 20
+          },
+          "text": "Roh Connor est tellement emblématique comme personnage !"
         }
       ]
     },
-
     {
       "id": 5,
       "infos": {
@@ -101,6 +126,15 @@
             "avatar": "https://i.pravatar.cc/300?u=2"
           },
           "text": "Pouvoir incarner le Spider-Man quoi..."
+        },
+        {
+          "id": 63,
+          "author": {
+            "name": "Nico",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 47
+          },
+          "text": "J'ai pu le tester quand en avant première, il est top comme jeu, déplacement fluide en plus ! :)"
         }
       ]
     }
