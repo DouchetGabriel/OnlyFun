@@ -42,7 +42,7 @@ function CreateGameFormComponent() {
     }
 
     return (
-        <div className="bg-white border rounded-lg px-8 py-6 mx-auto my-8 max-w-2xl min-h-screen">
+        <div className="bg-white border rounded-lg px-8 py-6 mx-auto max-w-2xl pb-3">
             <h2 className="text-2xl font-medium mb-4"> Enter the informations of the game </h2>
 
             <form>
