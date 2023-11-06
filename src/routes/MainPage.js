@@ -7,8 +7,7 @@ function TitleBannerComponent() {
     return (
         <div className="pt-10 pb-3">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">Only
-                <mark
-                    className="px-2 text-white bg-blue-600 items-center text-center rounded dark:bg-blue-500">Fun</mark>
+                <mark className="px-2 text-white bg-blue-600 items-center text-center rounded dark:bg-blue-500"> Fun </mark>
             </h1>
         </div>
     );
@@ -44,6 +43,18 @@ function VideoGameCardComponent(props) {
     );
 }
 
+function CreateNewGameButtonComponent() {
+    return (
+        <div className="items-center justify-center pb-5 top-3 right-3 absolute">
+            <Link to="/CreateGame" className="inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+                <svg className="w-4 h-4 text-white text-center items-center" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+            </Link>
+        </div>
+    )
+}
+
 function LoadingComponent() {
     return (
         <div className="flex flex-auto flex-col justify-center p-4 md:p-5">
@@ -75,12 +86,14 @@ function MainPage() {
         );
     } else {
         return (
-                <div className="dark:bg-gray-900 min-h-screen">
+                <div className="dark:bg-gray-900">
                     <header>
                         <TitleBannerComponent/>
                     </header>
-                    <div className="grid grid-cols-3">
+                    <div className="grid grid-cols-3 min-h-screen">
                         {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame} key={dataGame.id}/>)}
+
+                        <CreateNewGameButtonComponent/>
                     </div>
                 </div>
         );

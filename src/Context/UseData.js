@@ -34,7 +34,7 @@ export function DataGameProvider(props) {
             id: --createCommentId,
             author: {
                 name: name,
-                avatar: "https://i.pravatar.cc/300",
+                avatar: "https://i.pravatar.cc/300?u" + Math.floor(Math.random() * 100),
                 id: --createCommentId,
             },
             text: comment,
