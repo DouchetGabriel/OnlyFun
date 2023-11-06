@@ -55,12 +55,15 @@ export function DataGameProvider(props) {
                 comments: lastGameValue.comments.map(c => c.id === newComment.id ? commentFromServer : c)
             }))
         } catch (e) {
-            setData((lastGameValue) => ({...lastGameValue, comments: dataGame.comments.filter(c => c.id !== newComment.id)}))
+            setData((lastGameValue) => ({
+                ...lastGameValue,
+                comments: dataGame.comments.filter(c => c.id !== newComment.id)
+            }))
             console.log(e)
         }
     }
 
-    async function deleteComment(dataGame ,name, comment) {
+    async function deleteComment(dataGame, name, comment) {
         try {
             await fetch("http://localhost:3001/api/" + dataGame.id + "/deleteComment" + comment.id, {
                 method: "DELETE",
