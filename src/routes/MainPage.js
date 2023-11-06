@@ -45,7 +45,7 @@ function VideoGameCardComponent(props) {
 
 function CreateNewGameButtonComponent() {
     return (
-        <div className="items-center justify-center pb-5 top-3 right-3 absolute">
+        <div className="items-center justify-center bottom-6 right-6 fixed">
             <Link to="/CreateGame" className="inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
                 <svg className="w-4 h-4 text-white text-center items-center" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
