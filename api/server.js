@@ -46,4 +46,28 @@ app.delete("/api/:id/deleteComment/:commentId", (req, res) => {
     return res.json(game)
 })
 
+app.post("/api/addNewGame", (req, res) => {
+console.log("req.body => ", req.body)
+
+    const newGame = {
+        id: dataGamesFromJson.Games.length + 1,
+        infos: {
+            name: req.body.name,
+            description: req.body.description,
+            imageCard: req.body.imageCard,
+            imageBanner: req.body.imageBanner,
+            pegi: req.body.pegi,
+            date: req.body.date,
+            developers: req.body.developers,
+            type: req.body.type,
+            youtubeVideoLink: req.body.youtubeVideoLink,
+        },
+        comments: [],
+    }
+
+    dataGamesFromJson.Games.push(newGame)
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(dataGamesFromJson, null, 2))
+    return res.json(newGame)
+})
+
 app.listen(3001, () => console.log("Server started..."))

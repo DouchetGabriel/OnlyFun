@@ -35,7 +35,7 @@ export function DataGameProvider(props) {
             author: {
                 name: name,
                 avatar: "https://i.pravatar.cc/300?u" + Math.floor(Math.random() * 100),
-                id: --createCommentId,
+                id: 3,
             },
             text: comment,
         }
@@ -76,11 +76,58 @@ export function DataGameProvider(props) {
         }
     }
 
+    async function addNewGame(name, description, releaseDate, developers, typeOfGame, pegi, imageBanner, imageCard, youtubeLink) {
+        try {
+            const newGame = {
+                id: --createCommentId,
+                infos: {
+                    name: name,
+                    description: description,
+                    imageCard: imageCard,
+                    imageBanner: imageBanner,
+                    pegi: pegi,
+                    date: releaseDate,
+                    developers: developers,
+                    type: typeOfGame,
+                    youtubeVideoLink: youtubeLink
+                },
+                comments: []
+            }
+
+            const response = await fetch("http://localhost:3001/api/addNewGame", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    description: description,
+                    imageCard: imageCard,
+                    imageBanner: imageBanner,
+                    pegi: pegi,
+                    date: releaseDate,
+                    developers: developers,
+                    type: typeOfGame,
+                    youtubeVideoLink: youtubeLink
+                }),
+            })
+            const gameFromServer = await response.json();
+
+            setData((lastGameValue) => ({
+                ...lastGameValue,
+                Games: lastGameValue.Games.map(c => c.id === newGame.id ? gameFromServer : c)
+            }))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <dataGameContext.Provider value={{
             dataGame,
             addComment,
             deleteComment,
+            addNewGame
         }}>
             {props.children}
         </dataGameContext.Provider>

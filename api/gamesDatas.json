@@ -65,6 +65,15 @@
             "avatar": "https://i.pravatar.cc/300?u=2"
           },
           "text": "Roh incarner un assassin, quoi de mieux !"
+        },
+        {
+          "id": 60,
+          "author": {
+            "name": "Jacques",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 20
+          },
+          "text": "Lol"
         }
       ]
     },
