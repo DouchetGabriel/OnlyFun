@@ -260,7 +260,7 @@ function VideoGamePresentation() {
         )
     } else {
         return (
-            <div className="dark:bg-gray-900" id="dataGame">
+            <div className="dark:bg-gray-900 min-h-screen" id="dataGame">
                 <ImageBannerComponent/>
                 <GameDescriptionComponent/>
                 <YoutubeVideoComponent/>

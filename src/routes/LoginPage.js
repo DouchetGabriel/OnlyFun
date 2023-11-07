@@ -1,6 +1,38 @@
 import {Link} from "react-router-dom";
+import React, {useRef} from "react";
+import {UserProvider, useUser} from "../Context/UseUser";
+
+function TitleBannerComponent() {
+    return (
+        <h1 className="mb-20 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">Welcome on Only
+            <mark
+                className="px-2 text-white bg-blue-600 items-center text-center rounded dark:bg-blue-500"> Fun </mark>
+        </h1>
+    )
+}
 
 function LoginFormComponent() {
+    const {user} = useUser()
+
+    const userNameInput = useRef()
+    const passwordInput = useRef()
+
+    async function onSubmit(event) {
+        event.preventDefault()
+
+        const userName = userNameInput.current.value
+        const password = passwordInput.current.value
+
+        console.log(userName, password)
+
+        if(userName === undefined || password === undefined || userName === "" || password === "") {
+            console.log("Valeur null")
+            return
+        } else {
+            console.log("OK => ", userName + " - " + password)
+        }
+    }
+
     return (
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
             <div
@@ -14,22 +46,30 @@ function LoginFormComponent() {
                     <div className="divide-y divide-gray-200">
                         <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                             <div className="relative">
-                                <input autoComplete="off" id="email" name="email" type="text"
+                                <input autoComplete="off"
+                                       ref={userNameInput}
+                                       type="text"
                                        className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                                       placeholder="Username"/>
-                                <label htmlFor="email"
-                                       className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"> Username
+                                       placeholder="Username"
+                                       required/>
+                                <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"> Username
                                 </label>
                             </div>
                             <div className="relative">
-                                <input autoComplete="off" id="password" name="password" type="password"
+                                <input autoComplete="off"
+                                       ref={passwordInput}
+                                       type="password"
                                        className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                                       placeholder="Password"/>
-                                <label htmlFor="password"
-                                       className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
+                                       placeholder="Password"
+                                       required/>
+                                <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                             </div>
                             <div className="relative">
-                                <Link to={"/MainPage"} className="bg-blue-500 text-white rounded-md px-2 py-1">
+                                <Link to={"/MainPage"}
+                                      className="bg-blue-500 text-white rounded-md px-2 py-1"
+                                      type="submit"
+                                      onClick={onSubmit}
+                                >
                                     Submit
                                 </Link>
                             </div>
@@ -44,10 +84,22 @@ function LoginFormComponent() {
 
 function LoginPage() {
     return (
-        <div className={"dark:bg-gray-900 min-h-screen py-6 flex flex-col justify-center sm:py-12  "}>
+        <div className={"dark:bg-gray-900 min-h-screen py-6 flex flex-col justify-center sm:py-12"}>
+            <header>
+                <TitleBannerComponent/>
+            </header>
+
             <LoginFormComponent/>
         </div>
     )
 }
 
-export default LoginPage;
+function LoginPageWrapper() {
+    return (
+        <UserProvider>
+            <LoginPage/>
+        </UserProvider>
+    )
+}
+
+export default LoginPageWrapper;

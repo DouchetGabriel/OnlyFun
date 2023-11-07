@@ -20,11 +20,11 @@ export async function loader({params}) {
 
 // Provider
 export function DataGameProvider(props) {
-    const [dataGame, setData] = useState(undefined);
+    const [dataGame, setGame] = useState(undefined);
 
     useEffect(() => {
         loadData().then((data) => {
-            setData(data.Games)
+            setGame(data.Games)
         })
     }, []);
 
@@ -42,7 +42,7 @@ export function DataGameProvider(props) {
             isSending: true,
         }
 
-        setData({...dataGame, comments: [...dataGame.comments, newComment]})
+        setGame({...dataGame, comments: [...dataGame.comments, newComment]})
 
         try {
             const response = await fetch("http://localhost:3001/api/" + dataGame.id + "/addComment", {
@@ -54,12 +54,12 @@ export function DataGameProvider(props) {
             })
             const commentFromServer = await response.json();
 
-            setData((lastGameValue) => ({
+            setGame((lastGameValue) => ({
                 ...lastGameValue,
                 comments: lastGameValue.comments.map(c => c.id === newComment.id ? commentFromServer : c)
             }))
         } catch (e) {
-            setData((lastGameValue) => ({
+            setGame((lastGameValue) => ({
                 ...lastGameValue,
                 comments: dataGame.comments.filter(c => c.id !== newComment.id)
             }))
@@ -69,7 +69,7 @@ export function DataGameProvider(props) {
 
     async function deleteComment(dataGame, comment) {
         const oldComments = [...dataGame.comments]
-        setData({...dataGame, comments: dataGame.comments.filter(c => c.id !== comment.id)})
+        setGame({...dataGame, comments: dataGame.comments.filter(c => c.id !== comment.id)})
 
         try {
             await fetch("http://localhost:3001/api/" + dataGame.id + "/deleteComment/" + comment.id, {
@@ -80,7 +80,7 @@ export function DataGameProvider(props) {
             })
         } catch (e) {
             console.log(e)
-            setData({...dataGame, comments: oldComments})
+            setGame({...dataGame, comments: oldComments})
         }
     }
 
