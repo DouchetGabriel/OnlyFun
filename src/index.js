@@ -19,11 +19,18 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+
 import CreateGame from "./routes/CreateGame";
+import LoginPage from "./routes/LoginPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
+        element: <LoginPage/>,
+        errorElement: <ErrorPage/>,
+    },
+    {
+        path: "/MainPage",
         element: <MainPage/>,
         errorElement: <ErrorPage/>,
     },
