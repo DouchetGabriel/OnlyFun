@@ -15,22 +15,22 @@
       },
       "comments": [
         {
-          "id": 1,
+          "id": 61,
           "author": {
-            "id": 1,
-            "name": "Gaby",
-            "avatar": "https://i.pravatar.cc/300?u=1"
+            "name": "Test",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 92
           },
-          "text": "J'adore ce jeu !"
+          "text": "Test"
         },
         {
-          "id": 2,
+          "id": 77,
           "author": {
-            "id": 2,
-            "name": "Jean",
-            "avatar": "https://i.pravatar.cc/300?u=2"
+            "name": "Test",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 72
           },
-          "text": "Ce jeu est juste insane, je le recommande !"
+          "text": "Test"
         }
       ]
     },
@@ -47,35 +47,7 @@
         "type": "solo player and multiplayer",
         "youtubeVideoLink": "https://youtube.com/embed/nL6chDa7T8Q?si=c2P33Niy58qHVF-Y"
       },
-      "comments": [
-        {
-          "id": 1,
-          "author": {
-            "id": 1,
-            "name": "Gaby",
-            "avatar": "https://i.pravatar.cc/300?u=1"
-          },
-          "text": "J'y ai joué toute mon adolescene, j'en garde un superbe souvenir !"
-        },
-        {
-          "id": 2,
-          "author": {
-            "id": 2,
-            "name": "Jean",
-            "avatar": "https://i.pravatar.cc/300?u=2"
-          },
-          "text": "Roh incarner un assassin, quoi de mieux !"
-        },
-        {
-          "id": 60,
-          "author": {
-            "name": "Jacques",
-            "avatar": "https://i.pravatar.cc/300",
-            "id": 20
-          },
-          "text": "Lol"
-        }
-      ]
+      "comments": []
     },
     {
       "id": 5,
@@ -90,26 +62,7 @@
         "type": "solo player",
         "youtubeVideoLink": "https://youtube.com/embed/nq1M_Wc4FIc?si=_iTbM6bvlNNIfHRo"
       },
-      "comments": [
-        {
-          "id": 1,
-          "author": {
-            "id": 1,
-            "name": "Gaby",
-            "avatar": "https://i.pravatar.cc/300?u=1"
-          },
-          "text": "J'ai reçu ce jeu en kdo à Noël, j'en suis devenu accros !"
-        },
-        {
-          "id": 2,
-          "author": {
-            "id": 2,
-            "name": "Jean",
-            "avatar": "https://i.pravatar.cc/300?u=2"
-          },
-          "text": "Pouvoir incarner le Spider-Man quoi..."
-        }
-      ]
+      "comments": []
     }
   ]
 }

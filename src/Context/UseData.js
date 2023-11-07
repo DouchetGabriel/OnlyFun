@@ -38,8 +38,11 @@ export function DataGameProvider(props) {
                 id: 3,
             },
             text: comment,
+            isSending: true,
         }
-        console.log(newComment)
+
+        setData({...dataGame, comments: [...dataGame.comments, newComment]})
+
         try {
             const response = await fetch("http://localhost:3001/api/" + dataGame.id + "/addComment", {
                 method: "POST",
@@ -63,9 +66,12 @@ export function DataGameProvider(props) {
         }
     }
 
-    async function deleteComment(dataGame, name, comment) {
+    async function deleteComment(dataGame, comment) {
+        const oldComments = [...dataGame.comments]
+        setData({...dataGame, comments: dataGame.comments.filter(c => c.id !== comment.id)})
+
         try {
-            await fetch("http://localhost:3001/api/" + dataGame.id + "/deleteComment" + comment.id, {
+            await fetch("http://localhost:3001/api/" + dataGame.id + "/deleteComment/" + comment.id, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,6 +79,7 @@ export function DataGameProvider(props) {
             })
         } catch (e) {
             console.log(e)
+            setData({...dataGame, comments: oldComments})
         }
     }
 
@@ -99,17 +106,7 @@ export function DataGameProvider(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    name: name,
-                    description: description,
-                    imageCard: imageCard,
-                    imageBanner: imageBanner,
-                    pegi: pegi,
-                    date: releaseDate,
-                    developers: developers,
-                    type: typeOfGame,
-                    youtubeVideoLink: youtubeLink
-                }),
+                body: JSON.stringify(newGame),
             })
             const gameFromServer = await response.json();
 
