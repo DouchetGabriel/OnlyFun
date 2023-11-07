@@ -7,7 +7,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const dataGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", "utf-8"))
+const dataGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesData.json", "utf-8"))
+const dataUsersFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", "utf-8"))
 
 app.get("/api/getDataGames", (req, res) => {
     res.json(dataGamesFromJson)
@@ -35,14 +36,14 @@ app.post("/api/:id/addComment", (req, res) => {
     }
 
     game.comments.push(newComment)
-    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(dataGamesFromJson, null, 2))
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesData.json", JSON.stringify(dataGamesFromJson, null, 2))
     return res.json(newComment)
 })
 
 app.delete("/api/:id/deleteComment/:commentId", (req, res) => {
     const game = dataGamesFromJson.Games.find(game => game.id == req.params.id)
     game.comments = game.comments.filter(comment => comment.id != req.params.commentId)
-    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(dataGamesFromJson, null, 2))
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesData.json", JSON.stringify(dataGamesFromJson, null, 2))
     return res.json(game)
 })
 
@@ -66,7 +67,7 @@ console.log("req.body => ", req.body)
     }
 
     dataGamesFromJson.Games.push(newGame)
-    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesDatas.json", JSON.stringify(dataGamesFromJson, null, 2))
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesData.json", JSON.stringify(dataGamesFromJson, null, 2))
     return res.json(newGame)
 })
 
