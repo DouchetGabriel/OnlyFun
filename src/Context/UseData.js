@@ -1,4 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
+import {useLoaderData} from "react-router-dom";
 
 const dataGameContext = createContext(null)
 

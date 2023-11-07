@@ -91,7 +91,7 @@ function MainPage() {
                     <header>
                         <TitleBannerComponent/>
                     </header>
-                    <div className="grid grid-cols-3 min-h-screen">
+                    <div className={"flex justify-center items-start flex-wrap"}>
                         {dataGame.map((dataGame) => <VideoGameCardComponent dataGame={dataGame} key={dataGame.id}/>)}
 
                         <CreateNewGameButtonComponent/>

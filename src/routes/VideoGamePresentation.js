@@ -97,10 +97,14 @@ function CommentsSectionComponent() {
 
         console.log("onSubmit => ", comment, authorName)
 
-        addComment(dataGame, authorName, comment);
+        if(comment === undefined || authorName === undefined || comment === "" || authorName === "") {
+            return;
+        } else {
+            addComment(dataGame, authorName, comment);
 
-        commentTextArea.current.value = ""
-        authorNameTextArea.current.value = ""
+            commentTextArea.current.value = ""
+            authorNameTextArea.current.value = ""
+        }
     }
 
     return (
