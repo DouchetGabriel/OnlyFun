@@ -16,7 +16,7 @@ function TitleBannerComponent() {
 
 function VideoGameCardComponent(props) {
     return (
-        <div className="pt-10 flew items-center justify-center">
+        <div className="pt-10">
             <div
                 className="pb-0 relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border items-center ml-10">
                 <div

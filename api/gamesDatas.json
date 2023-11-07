@@ -15,22 +15,13 @@
       },
       "comments": [
         {
-          "id": 61,
+          "id": 41,
           "author": {
-            "name": "Test",
+            "name": "Kilo Ren",
             "avatar": "https://i.pravatar.cc/300",
-            "id": 92
+            "id": 95
           },
-          "text": "Test"
-        },
-        {
-          "id": 77,
-          "author": {
-            "name": "Test",
-            "avatar": "https://i.pravatar.cc/300",
-            "id": 72
-          },
-          "text": "Test"
+          "text": "J'ai adoré ce jeu, incarner Vador ou Kilo Ren nous fait vraiment nous sentir du côté obscur de la force."
         }
       ]
     },
@@ -47,7 +38,17 @@
         "type": "solo player and multiplayer",
         "youtubeVideoLink": "https://youtube.com/embed/nL6chDa7T8Q?si=c2P33Niy58qHVF-Y"
       },
-      "comments": []
+      "comments": [
+        {
+          "id": 33,
+          "author": {
+            "name": "La ref",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 95
+          },
+          "text": "J'fais des trucs un peu malsain... Lol"
+        }
+      ]
     },
     {
       "id": 5,
@@ -62,7 +63,17 @@
         "type": "solo player",
         "youtubeVideoLink": "https://youtube.com/embed/nq1M_Wc4FIc?si=_iTbM6bvlNNIfHRo"
       },
-      "comments": []
+      "comments": [
+        {
+          "id": 96,
+          "author": {
+            "name": "Spidey",
+            "avatar": "https://i.pravatar.cc/300",
+            "id": 73
+          },
+          "text": "Ce jeu a l'air incroyable, je n'ai pas encore eu l'occasion de l'essayer, mais les gameplay sont insane ! "
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,6 @@
 import {DataGameProvider, useData} from "../Context/UseData";
 import React, {useRef} from "react";
+import {Link} from "react-router-dom";
 
 function TitleBannerComponent() {
     return (
@@ -127,10 +128,18 @@ function CreateGameFormComponent() {
                 </div>
 
                 <div>
-                    <button type="submit"
-                            onSubmit={onSubmit}
-                            className="items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"> Save
-                    </button>
+                    <Link to="/"
+                          type="submit"
+                          onSubmit={onSubmit}
+                          className="items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                    >
+                        Save
+                    </Link>
+
+                    {/*<button type="submit"*/}
+                    {/*        onSubmit={onSubmit}*/}
+                    {/*        className="items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"> Save*/}
+                    {/*</button>*/}
                 </div>
 
             </form>

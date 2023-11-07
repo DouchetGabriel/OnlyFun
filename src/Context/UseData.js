@@ -85,9 +85,12 @@ export function DataGameProvider(props) {
 
     async function addNewGame(name, description, releaseDate, developers, typeOfGame, pegi, imageBanner, imageCard, youtubeLink) {
         try {
-            const newGame = {
-                id: --createCommentId,
-                infos: {
+            const response = await fetch("http://localhost:3001/api/addNewGame", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
                     name: name,
                     description: description,
                     imageCard: imageCard,
@@ -96,24 +99,10 @@ export function DataGameProvider(props) {
                     date: releaseDate,
                     developers: developers,
                     type: typeOfGame,
-                    youtubeVideoLink: youtubeLink
-                },
-                comments: []
-            }
-
-            const response = await fetch("http://localhost:3001/api/addNewGame", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newGame),
+                    youtubeVideoLink: youtubeLink,
+                }),
             })
-            const gameFromServer = await response.json();
-
-            setData((lastGameValue) => ({
-                ...lastGameValue,
-                Games: lastGameValue.Games.map(c => c.id === newGame.id ? gameFromServer : c)
-            }))
+            return await response.json();
         } catch (e) {
             console.log(e)
         }
