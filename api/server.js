@@ -71,4 +71,19 @@ console.log("req.body => ", req.body)
     return res.json(newGame)
 })
 
+app.post("/api/login", (req, res) => {
+    console.log("req.body => ", req.body)
+
+    const userName = req.body.userName
+    const password = req.body.password
+
+    const user = dataUsersFromJson.Users.find(user => user.name === userName && user.password === password)
+
+    if(user === undefined) {
+        return res.json({error: "User not found"})
+    } else {
+        return res.json(user)
+    }
+})
+
 app.listen(3001, () => console.log("Server started..."))

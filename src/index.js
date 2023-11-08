@@ -30,6 +30,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
     },
     {
+        path: "/CreateGame",
+        element: <CreateGame/>,
+        errorElement: <ErrorPage/>,
+    },
+    {
         path: "/MainPage",
         element: <MainPage/>,
         errorElement: <ErrorPage/>,
@@ -40,11 +45,6 @@ const router = createBrowserRouter([
         loader: VideoGamePresentationLoader,
         errorElement: <ErrorPage/>,
     },
-    {
-        path: "/CreateGame",
-        element: <CreateGame/>,
-        errorElement: <ErrorPage/>,
-    }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import React, {useRef} from "react";
 import {UserProvider, useUser} from "../Context/UseUser";
 
@@ -12,7 +12,7 @@ function TitleBannerComponent() {
 }
 
 function LoginFormComponent() {
-    const {user} = useUser()
+    const {checkLogin} = useUser()
 
     const userNameInput = useRef()
     const passwordInput = useRef()
@@ -23,13 +23,10 @@ function LoginFormComponent() {
         const userName = userNameInput.current.value
         const password = passwordInput.current.value
 
-        console.log(userName, password)
-
         if(userName === undefined || password === undefined || userName === "" || password === "") {
-            console.log("Valeur null")
             return
         } else {
-            console.log("OK => ", userName + " - " + password)
+            checkLogin(userName, password)
         }
     }
 
@@ -65,11 +62,11 @@ function LoginFormComponent() {
                                 <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                             </div>
                             <div className="relative">
-                                <Link to={"/MainPage"}
-                                      className="bg-blue-500 text-white rounded-md px-2 py-1"
-                                      type="submit"
-                                      onClick={onSubmit}
-                                >
+                                <Link
+                                    className="bg-blue-500 text-white rounded-md px-2 py-1"
+                                    type="submit"
+                                    onClick={onSubmit}
+                                    to={"/MainPage"}>
                                     Submit
                                 </Link>
                             </div>
