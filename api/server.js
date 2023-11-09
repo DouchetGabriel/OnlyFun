@@ -2,6 +2,8 @@ const express = require("express")
 
 const cors = require("cors")
 const fs = require("fs");
+const bcrypt = require("bcryptjs");
+const { randomBytes } = require('crypto');
 const app = express()
 
 app.use(cors())
@@ -71,15 +73,15 @@ app.post("/api/addNewGame", (req, res) => {
     return res.json(newGame)
 })
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login", async (req, res) => {
     console.log("req.body => ", req.body)
 
-    const userName = req.body.userName
+    const username = req.body.username
     const password = req.body.password
 
-    const user = dataUsersFromJson.Users.find(user => user.name === userName && user.password === password)
+    const user = dataUsersFromJson.Users.find(user => user.username === username && password === user.password)
 
-    if (user === undefined) {
+    if (user === undefined || password === undefined) {
         return res.json({error: "User not found"})
     } else {
         return res.json(user)

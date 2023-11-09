@@ -20,13 +20,13 @@ function LoginFormComponent() {
     async function onSubmit(event) {
         event.preventDefault()
 
-        const userName = userNameInput.current.value
+        const username = userNameInput.current.value
         const password = passwordInput.current.value
 
-        if(userName === undefined || password === undefined || userName === "" || password === "") {
+        if(username === undefined || password === undefined || username === "" || password === "") {
             return
         } else {
-            checkLogin(userName, password)
+            checkLogin(username, password)
         }
     }
 
@@ -65,7 +65,7 @@ function LoginFormComponent() {
                                 <Link
                                     className="bg-blue-500 text-white rounded-md px-2 py-1"
                                     type="submit"
-                                    //onClick={onSubmit}
+                                    onClick={onSubmit}
                                     to="/MainPage"> Submit </Link>
                             </div>
                         </div>
