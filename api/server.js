@@ -48,10 +48,10 @@ app.delete("/api/:id/deleteComment/:commentId", (req, res) => {
 })
 
 app.post("/api/addNewGame", (req, res) => {
-console.log("req.body => ", req.body)
+    console.log("req.body => ", req.body)
 
     const newGame = {
-        id: dataGamesFromJson.Games.length + 1,
+        id: dataGamesFromJson.Games.length + 3,
         infos: {
             name: req.body.name,
             description: req.body.description,
@@ -63,7 +63,7 @@ console.log("req.body => ", req.body)
             type: req.body.type,
             youtubeVideoLink: req.body.youtubeVideoLink,
         },
-        comments: [],
+        comments: []
     }
 
     dataGamesFromJson.Games.push(newGame)
@@ -79,7 +79,7 @@ app.post("/api/login", (req, res) => {
 
     const user = dataUsersFromJson.Users.find(user => user.name === userName && user.password === password)
 
-    if(user === undefined) {
+    if (user === undefined) {
         return res.json({error: "User not found"})
     } else {
         return res.json(user)

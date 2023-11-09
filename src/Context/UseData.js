@@ -101,9 +101,11 @@ export function DataGameProvider(props) {
                     developers: developers,
                     type: typeOfGame,
                     youtubeVideoLink: youtubeLink,
+                    isSending: true,
                 }),
             })
-            return await response.json();
+            const newGameFromServer = await response.json();
+            console.log(newGameFromServer)
         } catch (e) {
             console.log(e)
         }

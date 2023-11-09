@@ -87,7 +87,7 @@ function MainPage() {
         );
     } else {
         return (
-                <div className="dark:bg-gray-900">
+                <div className="dark:bg-gray-900 min-h-screen">
                     <header>
                         <TitleBannerComponent/>
                     </header>

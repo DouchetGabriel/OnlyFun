@@ -39,7 +39,11 @@ function CreateGameFormComponent() {
         const imageBannerCardLink = imageBannerCardLinkInput.current.value
         const youtubeLinkVideo = youtubeLinkVideoInput.current.value
 
-        addNewGame(name, description, releaseDate, developers, typeOfGame, pegi, imageBannerLink, imageBannerCardLink, youtubeLinkVideo)
+        if(name || description || releaseDate || developers || typeOfGame || pegi || imageBannerLink || imageBannerCardLink || youtubeLinkVideo === undefined || name || description || releaseDate || developers || typeOfGame || pegi || imageBannerLink || imageBannerCardLink || youtubeLinkVideo === "" ) {
+            return
+        } else {
+            addNewGame(name, description, releaseDate, developers, typeOfGame, pegi, imageBannerLink, imageBannerCardLink, youtubeLinkVideo)
+        }
     }
 
     return (
@@ -128,18 +132,13 @@ function CreateGameFormComponent() {
                 </div>
 
                 <div>
-                    <Link to="/"
-                          type="submit"
-                          onSubmit={onSubmit}
+                    <Link type="submit"
+                          onClick={onSubmit}
+                          to={"/MainPage"}
                           className="items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
                     >
                         Save
                     </Link>
-
-                    {/*<button type="submit"*/}
-                    {/*        onSubmit={onSubmit}*/}
-                    {/*        className="items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"> Save*/}
-                    {/*</button>*/}
                 </div>
 
             </form>

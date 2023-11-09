@@ -65,10 +65,8 @@ function LoginFormComponent() {
                                 <Link
                                     className="bg-blue-500 text-white rounded-md px-2 py-1"
                                     type="submit"
-                                    onClick={onSubmit}
-                                    to={"/MainPage"}>
-                                    Submit
-                                </Link>
+                                    //onClick={onSubmit}
+                                    to="/MainPage"> Submit </Link>
                             </div>
                         </div>
                     </div>
