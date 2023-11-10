@@ -1,6 +1,7 @@
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import React, {useRef} from "react";
 import {UserProvider, useUser} from "../context/UseUser";
+import bcrypt from 'bcryptjs'
 
 function TitleBannerComponent() {
     return (

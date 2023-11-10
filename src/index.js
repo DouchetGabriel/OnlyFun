@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 

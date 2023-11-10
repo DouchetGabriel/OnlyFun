@@ -26,6 +26,7 @@ export function UserProvider(props) {
             console.log("User found !")
             setUser(userFromServer)
             console.log(user)
+
         }
     }
 

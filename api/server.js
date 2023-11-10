@@ -79,16 +79,14 @@ app.post("/api/login", async (req, res) => {
 
     const username = req.body.username
     const password = req.body.password
-
-    const passwordHash = bcrypt.hashSync(password, 10)
+    const hashedPassword = bcrypt.hashSync(password, 10)
 
     const user = dataUsersFromJson.Users.find(user => user.name === username && user.password === password)
 
-    // problème à ce niveau-ci
-    user.password.push(passwordHash)
+    user.password.push(hashedPassword)
     fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", JSON.stringify(dataUsersFromJson, null, 2))
 
-    if(user) {
+    if(user && bcrypt.compareSync(password, hashedPassword)) {
         const token = await generateToken()
         saveToken(user.id, token)
 
@@ -124,6 +122,22 @@ function saveToken(userId, token) {
         dataTokensFromJson.Tokens.push(newToken);
         fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\tokensData.json", JSON.stringify(dataTokensFromJson, null, 2))
     }
+}
+
+function getUserFromReq(req) {
+    const token = req.header.authorization.split(' ')[1]
+    const tokens = dataTokensFromJson.Tokens
+
+    const tokenData = tokens.find(tokenData => tokenData.token === token)
+
+    if(tokenData) {
+        const users = dataUsersFromJson.Users
+        const user = users.find(user => user.id === tokenData.userId)
+        if(user) {
+            return user
+        }
+    }
+    throw new Error('Invalid token')
 }
 
 app.listen(3001, () => console.log("Server started..."))
