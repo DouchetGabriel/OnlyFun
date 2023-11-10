@@ -74,7 +74,7 @@ app.post("/api/addNewGame", (req, res) => {
     return res.json(newGame)
 })
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login", async (req, res) => {
     console.log("req.body => ", req.body)
 
     const username = req.body.username
@@ -84,10 +84,15 @@ app.post("/api/login", (req, res) => {
 
     const user = dataUsersFromJson.Users.find(user => user.name === username && user.password === password)
 
+    // Les deux lignes ici ne fonctionne pas, enfin je pense
     user.password.push(passwordHash)
     fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", JSON.stringify(dataUsersFromJson, null, 2))
 
-    if(user && bcrypt.compareSync(password, user.password)) {
+    if(user) {
+        const token = await generateToken()
+        saveToken(user.id, token)
+
+        console.log("token => ", token, " user => ", user)
         return res.json(user)
     } else {
         return res.json({error: "User not found"})
@@ -103,6 +108,20 @@ function generateToken() {
             resolve(buf.toString('hex'));
         });
     })
+}
+
+function saveToken(userId, token) {
+    if(dataTokensFromJson.Tokens.find(token => token.userId === userId)){
+        return
+    } else {
+        const newToken = {
+            userId: userId,
+            token: token
+        }
+
+        dataTokensFromJson.Tokens.push(newToken);
+        fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\tokensData.json", JSON.stringify(dataTokensFromJson, null, 2))
+    }
 }
 
 app.listen(3001, () => console.log("Server started..."))
