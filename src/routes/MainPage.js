@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../App.css';
 import {Link} from "react-router-dom";
-import {DataGameProvider, useData} from "../Context/UseData";
+import {DataGameProvider, useData} from "../context/UseData";
 
 function TitleBannerComponent() {
     return (

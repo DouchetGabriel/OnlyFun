@@ -1,4 +1,4 @@
-import {DataGameProvider, useData} from "../Context/UseData";
+import {DataGameProvider, useData} from "../context/UseData";
 import React, {useRef} from "react";
 import {Link} from "react-router-dom";
 

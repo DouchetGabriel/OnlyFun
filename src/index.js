@@ -10,7 +10,7 @@ import VideoGamePresentation/*, {
 
 import UseData, {
     loader as VideoGamePresentationLoader,
-} from "./Context/UseData";
+} from "./context/UseData";
 
 import ErrorPage from "./ErrorPage";
 import MainPage from "./routes/MainPage";

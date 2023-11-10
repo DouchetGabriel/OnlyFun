@@ -84,7 +84,7 @@ app.post("/api/login", async (req, res) => {
 
     const user = dataUsersFromJson.Users.find(user => user.name === username && user.password === password)
 
-    // Les deux lignes ici ne fonctionne pas, enfin je pense
+    // problème à ce niveau-ci
     user.password.push(passwordHash)
     fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", JSON.stringify(dataUsersFromJson, null, 2))
 
@@ -92,15 +92,17 @@ app.post("/api/login", async (req, res) => {
         const token = await generateToken()
         saveToken(user.id, token)
 
-        console.log("token => ", token, " user => ", user)
-        return res.json(user)
+        return res.json({
+            id: user.id,
+            name: user.name,
+            token: token
+        })
     } else {
         return res.json({error: "User not found"})
     }
 })
 
 // Token part
-
 function generateToken() {
     return new Promise((resolve, reject) => {
         randomBytes(60, (err, buf) => {

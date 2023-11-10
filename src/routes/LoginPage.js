@@ -1,6 +1,6 @@
 import {Link, NavLink} from "react-router-dom";
 import React, {useRef} from "react";
-import {UserProvider, useUser} from "../Context/UseUser";
+import {UserProvider, useUser} from "../context/UseUser";
 
 function TitleBannerComponent() {
     return (

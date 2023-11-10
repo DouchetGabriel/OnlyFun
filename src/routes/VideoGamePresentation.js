@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import '../App.css';
 import {useLoaderData} from "react-router-dom";
-import {DataGameProvider, useData} from "../Context/UseData";
+import {DataGameProvider, useData} from "../context/UseData";
 
 function ImageBannerComponent() {
     const dataGame = useLoaderData();
