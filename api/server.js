@@ -11,6 +11,7 @@ app.use(express.json())
 
 const dataGamesFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\gamesData.json", "utf-8"))
 const dataUsersFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", "utf-8"))
+const dataTokensFromJson = JSON.parse(fs.readFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\tokensData.json", "utf-8"))
 
 app.get("/api/getDataGames", (req, res) => {
     res.json(dataGamesFromJson)
@@ -73,19 +74,35 @@ app.post("/api/addNewGame", (req, res) => {
     return res.json(newGame)
 })
 
-app.post("/api/login", async (req, res) => {
+app.post("/api/login", (req, res) => {
     console.log("req.body => ", req.body)
 
     const username = req.body.username
     const password = req.body.password
 
-    const user = dataUsersFromJson.Users.find(user => user.username === username && password === user.password)
+    const passwordHash = bcrypt.hashSync(password, 10)
 
-    if (user === undefined || password === undefined) {
-        return res.json({error: "User not found"})
-    } else {
+    const user = dataUsersFromJson.Users.find(user => user.name === username && user.password === password)
+
+    user.password.push(passwordHash)
+    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", JSON.stringify(dataUsersFromJson, null, 2))
+
+    if(user && bcrypt.compareSync(password, user.password)) {
         return res.json(user)
+    } else {
+        return res.json({error: "User not found"})
     }
 })
+
+// Token part
+
+function generateToken() {
+    return new Promise((resolve, reject) => {
+        randomBytes(60, (err, buf) => {
+            if (err) return reject(err);
+            resolve(buf.toString('hex'));
+        });
+    })
+}
 
 app.listen(3001, () => console.log("Server started..."))
