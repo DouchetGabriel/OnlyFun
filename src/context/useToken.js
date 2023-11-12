@@ -15,7 +15,7 @@ export function TokenProvider(props) {
         return userToken?.token
     }
 
-    const saveToken = userToken => {
+    const saveToken = (userToken) => {
         localStorage.setItem(storageKey, JSON.stringify(userToken));
         setToken(userToken.token);
     }

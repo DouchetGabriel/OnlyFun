@@ -23,9 +23,7 @@ export function UserProvider(props) {
         if(reponseFromServer.error !== undefined) {
             console.log(reponseFromServer.error)
         } else {
-            console.log("User found !")
             setUser(reponseFromServer)
-            console.log('user => ', user)
             return reponseFromServer
         }
     }
