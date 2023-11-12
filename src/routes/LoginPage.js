@@ -1,7 +1,7 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import React, {useRef} from "react";
 import {UserProvider, useUser} from "../context/UseUser";
-import bcrypt from 'bcryptjs'
+import PropTypes from "prop-types";
 
 function TitleBannerComponent() {
     return (
@@ -12,11 +12,13 @@ function TitleBannerComponent() {
     )
 }
 
-function LoginFormComponent() {
+function LoginFormComponent({setToken}) {
     const {checkLogin} = useUser()
 
     const userNameInput = useRef()
     const passwordInput = useRef()
+
+    const navigate = useNavigate()
 
     async function onSubmit(event) {
         event.preventDefault()
@@ -27,7 +29,9 @@ function LoginFormComponent() {
         if(username === undefined || password === undefined || username === "" || password === "") {
             return
         } else {
-            checkLogin(username, password)
+            const token = await checkLogin(username, password)
+            //setToken(token)
+            //navigate("/MainPage")
         }
     }
 
@@ -67,14 +71,13 @@ function LoginFormComponent() {
                                     className="bg-blue-500 text-white rounded-md px-2 py-1"
                                     type="submit"
                                     onClick={onSubmit}
-                                    to="/MainPage"> Submit </Link>
+                                    to={"/MainPage"}> Submit </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     )
 }
 
@@ -99,3 +102,7 @@ function LoginPageWrapper() {
 }
 
 export default LoginPageWrapper;
+
+LoginFormComponent.propTypes = {
+    setToken: PropTypes.func.isRequired
+}

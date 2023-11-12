@@ -79,14 +79,14 @@ app.post("/api/login", async (req, res) => {
 
     const username = req.body.username
     const password = req.body.password
-    const hashedPassword = bcrypt.hashSync(password, 10)
+
+    const hashedPassword = await bcrypt.hash(password, 10)
 
     const user = dataUsersFromJson.Users.find(user => user.name === username && user.password === password)
 
     user.password.push(hashedPassword)
-    fs.writeFileSync("C:\\Users\\Gaby\\Downloads\\only_fun\\api\\usersData.json", JSON.stringify(dataUsersFromJson, null, 2))
 
-    if(user && bcrypt.compareSync(password, hashedPassword)) {
+    if(user && bcrypt.compareSync(password, user.password)) {
         const token = await generateToken()
         saveToken(user.id, token)
 
@@ -139,5 +139,19 @@ function getUserFromReq(req) {
     }
     throw new Error('Invalid token')
 }
+
+app.get('/me', (req, res) => {
+    try {
+        const user = getUserFromReq(req);
+        res.json({
+            id: user.id,
+            username: user.name
+        });
+    } catch (e) {
+        res.status(401).json({
+            error: e.message
+        });
+    }
+})
 
 app.listen(3001, () => console.log("Server started..."))

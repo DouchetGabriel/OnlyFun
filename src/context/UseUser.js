@@ -18,15 +18,15 @@ export function UserProvider(props) {
             },
             body: JSON.stringify({username: username, password: password}),
         })
-        const userFromServer = await response.json();
+        const reponseFromServer = await response.json();
 
-        if(userFromServer.error !== undefined) {
-            console.log(userFromServer.error)
+        if(reponseFromServer.error !== undefined) {
+            console.log(reponseFromServer.error)
         } else {
             console.log("User found !")
-            setUser(userFromServer)
-            console.log(user)
-
+            setUser(reponseFromServer)
+            console.log('user => ', user)
+            return reponseFromServer
         }
     }
 

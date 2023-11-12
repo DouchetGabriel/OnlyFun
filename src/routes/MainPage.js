@@ -1,9 +1,6 @@
-import React, {useEffect, useState} from "react";
 import '../App.css';
 import {Link} from "react-router-dom";
 import {DataGameProvider, useData} from "../context/UseData";
-import {useToken} from "../context/useToken";
-import LoginPage from "./LoginPage";
 
 function TitleBannerComponent() {
     return (
@@ -78,7 +75,6 @@ function LoadingComponent() {
 function MainPage() {
 
     const {dataGame} = useData();
-    const {token, setToken} = useToken()
 
     if (dataGame === undefined) {
         return (
@@ -88,8 +84,6 @@ function MainPage() {
                 </header>
             </div>
         );
-    } else if(!token) {
-        return <LoginPage setToken={setToken}/>
     } else {
         return (
                 <div className="dark:bg-gray-900 min-h-screen">
