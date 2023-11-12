@@ -3,7 +3,7 @@ const express = require("express")
 const cors = require("cors")
 const fs = require("fs");
 const bcrypt = require("bcryptjs");
-const { randomBytes } = require('crypto');
+const {randomBytes} = require('crypto');
 const app = express()
 
 app.use(cors())
@@ -80,13 +80,9 @@ app.post("/api/login", async (req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    const hashedPassword = await bcrypt.hash(password, 10)
-
     const user = dataUsersFromJson.Users.find(user => user.name === username && user.password === password)
 
-    user.password.push(hashedPassword)
-
-    if(user && bcrypt.compareSync(password, user.password)) {
+    if (user) {
         const token = await generateToken()
         saveToken(user.id, token)
 
@@ -111,7 +107,7 @@ function generateToken() {
 }
 
 function saveToken(userId, token) {
-    if(dataTokensFromJson.Tokens.find(token => token.userId === userId)){
+    if (dataTokensFromJson.Tokens.find(token => token.userId === userId)) {
         return
     } else {
         const newToken = {
@@ -130,10 +126,10 @@ function getUserFromReq(req) {
 
     const tokenData = tokens.find(tokenData => tokenData.token === token)
 
-    if(tokenData) {
+    if (tokenData) {
         const users = dataUsersFromJson.Users
         const user = users.find(user => user.id === tokenData.userId)
-        if(user) {
+        if (user) {
             return user
         }
     }
