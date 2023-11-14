@@ -91,6 +91,7 @@ function MainPage() {
             </div>
         );
     } else if(!token) {
+        console.log("Vous n'avez pas de token")
         return <LoginPage/>
     } else {
         return (
