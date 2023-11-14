@@ -23,7 +23,7 @@ export function UserProvider(props) {
         if(reponseFromServer.error !== undefined) {
             console.log(reponseFromServer.error)
         } else {
-            setUser(reponseFromServer)
+            setUser(reponseFromServer.name)
             return reponseFromServer
         }
     }

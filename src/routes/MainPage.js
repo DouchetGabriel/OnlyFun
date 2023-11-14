@@ -1,16 +1,25 @@
 import '../App.css';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {DataGameProvider, useData} from "../context/UseData";
 import {TokenProvider, useToken} from "../context/useToken";
-import LoginPage from "./LoginPage";
 
-function TitleBannerComponent() {
+function TitleBannerComponent(props) {
+    const {clearToken} = useToken()
+
     return (
         <div className="pt-10 pb-3">
-            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">Only
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center"> Only
                 <mark
                     className="px-2 text-white bg-blue-600 items-center text-center rounded dark:bg-blue-500"> Fun </mark>
             </h1>
+
+            <div className="absolute top-7 right-10 h-16 w-16">
+                <Link onClick={clearToken}
+                      to="/"
+                      className="items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    Logout
+                </Link>
+            </div>
         </div>
     );
 }
@@ -81,6 +90,7 @@ function MainPage() {
 
     const {dataGame} = useData();
     const {token} = useToken();
+    const navigate = useNavigate()
 
     if (dataGame === undefined) {
         return (
@@ -92,7 +102,7 @@ function MainPage() {
         );
     } else if(!token) {
         console.log("Vous n'avez pas de token")
-        return <LoginPage/>
+        navigate("/")
     } else {
         return (
             <div className="dark:bg-gray-900 min-h-screen">
