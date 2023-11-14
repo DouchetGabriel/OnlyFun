@@ -2,6 +2,7 @@ import {Link, useNavigate} from "react-router-dom";
 import React, {useRef} from "react";
 import {UserProvider, useUser} from "../context/UseUser";
 import PropTypes from "prop-types";
+import {TokenProvider, useToken} from "../context/useToken";
 
 function TitleBannerComponent() {
     return (
@@ -12,9 +13,9 @@ function TitleBannerComponent() {
     )
 }
 
-function LoginFormComponent({setToken}) {
+function LoginFormComponent() {
     const {checkLogin} = useUser()
-    //const {setToken} = useToken()
+    const {setToken} = useToken()
 
     const userNameInput = useRef()
     const passwordInput = useRef()
@@ -34,7 +35,7 @@ function LoginFormComponent({setToken}) {
             console.log('User found !')
             console.log('user & token => ', token)
             setToken(token)
-            //navigate("/MainPage")
+            navigate("/MainPage")
         }
     }
 
@@ -98,14 +99,12 @@ function LoginPage() {
 
 function LoginPageWrapper() {
     return (
-        <UserProvider>
-            <LoginPage/>
-        </UserProvider>
+        <TokenProvider>
+            <UserProvider>
+                <LoginPage/>
+            </UserProvider>
+        </TokenProvider>
     )
 }
 
 export default LoginPageWrapper;
-
-LoginFormComponent.propTypes = {
-    setToken: PropTypes.func.isRequired
-}

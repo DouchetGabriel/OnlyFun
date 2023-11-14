@@ -1,9 +1,9 @@
-import {createContext, useState} from "react";
+import {createContext, useContext, useState} from "react";
 
 const tokenContext = createContext(null);
 
 export function useToken() {
-    return tokenContext;
+    return useContext(tokenContext);
 }
 
 export function TokenProvider(props) {
