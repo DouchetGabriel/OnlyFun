@@ -23,7 +23,7 @@ export function UserProvider(props) {
         if(reponseFromServer.error !== undefined) {
             console.log(reponseFromServer.error)
         } else {
-            setUser(reponseFromServer.name)
+            console.log('Username dans le reponseFromServer => ', reponseFromServer.name)
             return reponseFromServer
         }
     }
@@ -31,6 +31,7 @@ export function UserProvider(props) {
     return (
         <userContext.Provider value={{
             user,
+            setUser,
             checkLogin,
         }}>
             {props.children}

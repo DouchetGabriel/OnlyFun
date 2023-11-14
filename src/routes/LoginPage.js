@@ -1,7 +1,6 @@
 import {Link, useNavigate} from "react-router-dom";
 import React, {useRef} from "react";
 import {UserProvider, useUser} from "../context/UseUser";
-import PropTypes from "prop-types";
 import {TokenProvider, useToken} from "../context/useToken";
 
 function TitleBannerComponent() {

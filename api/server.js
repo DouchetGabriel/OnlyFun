@@ -75,8 +75,6 @@ app.post("/api/addNewGame", (req, res) => {
 })
 
 app.post("/api/login", async (req, res) => {
-    console.log("req.body => ", req.body)
-
     const username = req.body.username
     const password = req.body.password
 
@@ -130,15 +128,17 @@ function getUserFromReq(req) {
         const users = dataUsersFromJson.Users
         const user = users.find(user => user.id === tokenData.userId)
         if (user) {
+            console.log("Correspondance trouvée => ", user)
             return user
         }
     }
     throw new Error('Invalid token')
 }
 
-app.get('/me', (req, res) => {
+app.get('api/me', (req, res) => {
     try {
         const user = getUserFromReq(req);
+
         res.json({
             id: user.id,
             username: user.name
