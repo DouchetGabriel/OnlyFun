@@ -130,18 +130,22 @@ function getUserFromReq(req) {
         if (user) {
             console.log("Correspondance trouvée => ", user)
             return user
+        } else {
+            console.log("Auncune correspondance trouvée")
         }
     }
     throw new Error('Invalid token')
 }
 
-app.get('api/me', (req, res) => {
+app.get("/me", (req, res) => {
     try {
         const user = getUserFromReq(req);
 
+        console.log(user)
+
         res.json({
             id: user.id,
-            username: user.name
+            username: user.name,
         });
     } catch (e) {
         res.status(401).json({
