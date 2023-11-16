@@ -119,8 +119,9 @@ function saveToken(userId, token) {
 }
 
 function getUserFromReq(req) {
-    const token = req.header.authorization.split(' ')[1]
+    const token = req.headers.authorization.split(' ')[1]
     const tokens = dataTokensFromJson.Tokens
+    console.log(tokens)
 
     const tokenData = tokens.find(tokenData => tokenData.token === token)
 
@@ -137,7 +138,7 @@ function getUserFromReq(req) {
     throw new Error('Invalid token')
 }
 
-app.get("/me", (req, res) => {
+app.get("/api/me", (req, res) => {
     try {
         const user = getUserFromReq(req);
 
